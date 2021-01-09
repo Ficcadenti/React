@@ -19,15 +19,15 @@ class Clock extends Component
     }
 
     tick = () =>{ 
-        /*this.setState({
+        this.setState({
             date: new Date()
-        });*/
+        });
 
-        this.setState((precState, props)=>{
+        /*this.setState((precState, props)=>{
             return {
                 date: new Date()
             }
-        });
+        });*/
     };
 
 

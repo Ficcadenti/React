@@ -20,9 +20,9 @@ class Clock2 extends Component
     }
 
     tick = () =>{ 
-        this.setState((precState, props)=>{
+        this.setState((precState, propsPassate)=>{
             return {
-                timestamp: precState.timestamp + this.props.secs*1000,
+                timestamp: precState.timestamp + propsPassate.secs*1000,
             }
         });
     };
