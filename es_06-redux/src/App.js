@@ -48,7 +48,7 @@ class App extends Component{
         <NavBar onSerachTerm={this.searchFilm}></NavBar>
         <div className="jumbotron jumbotron-fluid">
           <div className="container">
-            <h1 className="display-4">es-05 - I miei film !!!</h1>
+            <h1 className="display-4">es-06 - Redux !!!</h1>
             <p className="lead">Lista dei miei film.</p>
           </div>
         </div>
