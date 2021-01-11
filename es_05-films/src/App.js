@@ -6,7 +6,7 @@ import NavBar from './components/NavBar';
 const API_KEY='4cb9def9';
 const API_URL = 'http://www.omdbapi.com';
 
-function fetchFilms(serach ='west')
+function fetchFilms(serach)
 {
   return fetch(API_URL + '?apikey=' + API_KEY + '&s=' + serach).then((res) => res.json());
 }
@@ -21,20 +21,19 @@ class App extends Component{
       totalCount: 0
     }
   }
-  componentDidMount()
-  {
-    fetchFilms().then((res)=>{
-      console.log(res)
-    });
-
-    fetchFilms().then( (res) => {
-      this.setState({
-        films : res.Search,
-        totalCount : res.totalResults
-      })
-    });
+  
+  searchFilm = (term = 'west') =>{
+    if(term.length< 3){
+      return
+    }
+    fetchFilms(term).then(res => {
+     this.setState({
+       films : res.Search,
+       totalCount : res.totalResults
+     })
+   })
   }
-
+  
   getFilms()
   {
     return this.state.films.map(({imdbID,Title}) => {
@@ -45,7 +44,7 @@ class App extends Component{
   render(){
     return (
       <React.Fragment>
-        <NavBar></NavBar>
+        <NavBar onSerachTerm={this.searchFilm}></NavBar>
         <div className="jumbotron jumbotron-fluid">
           <div className="container">
             <h1 className="display-4">es-05 - I miei film !!!</h1>
@@ -59,6 +58,11 @@ class App extends Component{
       
       </React.Fragment>
     );
+  }
+
+  componentDidMount()
+  {
+    this.searchFilm('back to the future');
   }
 }
 
